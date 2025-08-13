@@ -7,8 +7,18 @@
     <title>Document</title>
     <style>
         #body {
-            background-color: #011a41;
+            background-image: url('back2.jpg');
             background-size: cover;
+        }
+
+        #body:before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url('back2.jpg');
+            filter: blur(8px);
+            z-index: -1;
+            /* Keeps blur behind content */
         }
 
         * {
