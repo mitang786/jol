@@ -7,7 +7,7 @@
     <title>Document</title>
     <style>
         #body {
-            background-image: url('back2.jpg');
+            background-color: #011a41;
             background-size: cover;
         }
 
@@ -126,6 +126,54 @@
             transform: translateX(0);
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
+
+        .img-container {
+            display: flex;
+        }
+
+        .for-ff-img:hover img {
+            scale: 1.2;
+            border-radius: 10px;
+        }
+
+        .for-ff-img {
+            overflow: hidden;
+            display: block;
+            transition: .3s;
+        }
+
+        .for-bgmi-img:hover img {
+            scale: 1.2;
+            border-radius: 10px;
+        }
+
+        .for-bgmi-img {
+            overflow: hidden;
+            display: block;
+            transition: .3s;
+        }
+
+        .for-cod-img:hover img {
+            scale: 1.2;
+            border-radius: 10px;
+        }
+
+        .for-cod-img {
+            overflow: hidden;
+            display: block;
+            transition: .3s;
+        }
+
+        .for-coc-img:hover img {
+            scale: 1.2;
+            border-radius: 10px;
+        }
+
+        .for-coc-img {
+            overflow: hidden;
+            display: block;
+            transition: .3s;
+        }
     </style>
 </head>
 
@@ -146,6 +194,30 @@
             </ul>
         </div>
     </label>
+    <div class="img-container">
+        <div class="for-ff-img">
+            <img src="ff.png" onclick="location.href='ff.html' " alt="Free Fire" width="180px;"
+                style="margin-top: 200px;margin-left: 200px;">
+        </div>
+
+
+        <div class="for-bgmi-img">
+            <img src="bgmi.webp" onclick="location.href='bgmi.html' " alt="BGMI" width="180px;"
+                style="margin-top: 200px;margin-left: 200px;">
+        </div>
+
+        <div class="for-cod-img">
+            <img src="cod.jpg" onclick="location.href='cod.html' " alt="COD" width="180px;"
+                style="margin-top: 200px;margin-left: 200px;">
+        </div>
+
+        <div class="for-coc-img">
+            <img src="coc.png" onclick="location.href='coc.html' " alt="Clash of Clans" width="180px;"
+                style="margin-top: 200px;margin-left: 200px;">
+        </div>
+
+    </div>
+
 </body>
 
 </html>

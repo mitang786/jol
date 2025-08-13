@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Free Fire Diamond Top Up Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('back2.jpg');
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 40px auto;
+            background: #ffffff00;
+            padding: 24px 32px 32px 32px;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+        }
+
+        label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 6px;
+            color: white;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #ffbe0b;
+            color: #222;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #faa307;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Free Fire Diamond Top Up</h2>
+        <form id="topupForm">
+            <label for="playerId">Free Fire Player ID</label>
+            <input type="text" id="playerId" name="playerId" required placeholder="Enter your Player ID">
+
+            <label for="diamonds">Select Diamonds</label>
+            <select id="diamonds" name="diamonds" required>
+                <option value="">-- Select Amount --</option>
+                <option value="100">100 Diamonds</option>
+                <option value="310">310 Diamonds</option>
+                <option value="520">520 Diamonds</option>
+                <option value="1060">1060 Diamonds</option>
+                <option value="2180">2180 Diamonds</option>
+            </select>
+
+            <label for="payment">Payment Method</label>
+            <select id="payment" name="payment" required>
+                <option value="">-- Select Payment --</option>
+                <option value="paytm">Paytm</option>
+                <option value="googlepay">Google Pay</option>
+                <option value="phonepe">PhonePe</option>
+                <option value="upi">UPI</option>
+            </select>
+
+            <label for="contact">Contact Number</label>
+            <input type="tel" id="contact" name="contact" required placeholder="Enter your contact number">
+
+            <button type="submit">Top Up Now</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('topupForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Your top up request has been submitted!');
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>
