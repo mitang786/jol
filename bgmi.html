@@ -3,8 +3,60 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Free Fire Diamond Top Up Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
+        .hidden {
+            display: none;
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 40px auto;
+            background: #ffffff00;
+            padding: 24px 32px 32px 32px;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 6px;
+            color: white;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #ffbe0b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: rgba(8, 229, 8, 0.923);
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-image: url('back2.jpg');
@@ -129,57 +181,6 @@
             transform: translateX(0);
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
-
-        .container {
-            max-width: 400px;
-            margin: 40px auto;
-            background: #ffffff00;
-            padding: 24px 32px 32px 32px;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-        }
-
-        h2 {
-            text-align: center;
-            color: white;
-        }
-
-        label {
-            display: block;
-            margin-top: 16px;
-            margin-bottom: 6px;
-            color: white;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 8px 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 12px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #ffbe0b;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background: rgba(8, 229, 8, 0.923);
-        }
-
-        .hidden {
-            display: none;
-        }
     </style>
 </head>
 
@@ -200,21 +201,21 @@
             </ul>
         </div>
     </label>
-
     <div class="container">
-        <h2>Free Fire Diamond Top Up</h2>
-        <form id="topupForm">
-            <label for="playerId">Free Fire Player ID</label>
-            <input type="number" id="playerId" name="playerId" required placeholder="Enter your Player ID">
+        <h2>BGMI UC Top Up</h2>
+        <form ID="topupForm">
+            <label>
+                player_id:</label>
+            <input type="number" placeholder="Enter your Player ID">
 
-            <label for="diamonds">Select Diamonds</label>
-            <select id="diamonds" name="diamonds" required>
-                <option value="">-- Select Diamonds --</option>
-                <option value="100">100 Diamonds</option>
-                <option value="310">310 Diamonds</option>
-                <option value="520">520 Diamonds</option>
-                <option value="1060">1060 Diamonds</option>
-                <option value="2180">2180 Diamonds</option>
+            <label for="UC">Select UC</label>
+            <select id="UC" name="UC" required>
+                <option value="">-- Select UC --</option>
+                <option value="100">100 UC</option>
+                <option value="310">310 UC</option>
+                <option value="520">520 UC</option>
+                <option value="1060">1060 UC</option>
+                <option value="2180">2180 UC</option>
             </select>
 
             <label for="payment">Payment Method</label>
@@ -229,12 +230,12 @@
 
             <div id="redeemcodebox" class="hidden">
                 <label for="redeemCode">Enter Redeem Code:</label>
-                <input type="text" id="redeemCode" name="redeemCode" placeholder="Enter your code">
+                <input type="text" id="redeemCode" name="redeemCode" placeholder="Enter your redeem code" required>
             </div>
 
             <button type="submit">Top Up Now</button>
-        </form>
     </div>
+    </form>
     <script>
         document.getElementById('topupForm').addEventListener('submit', function (e) {
             e.preventDefault();
