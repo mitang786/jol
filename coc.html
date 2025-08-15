@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 40px auto;
+            background: #ffffff00;
+            padding: 24px 32px 32px 32px;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 6px;
+            color: white;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #ffbe0b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: rgba(8, 229, 8, 0.923);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('back2.jpg');
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+        }
+
+        .slide {
+            height: 100%;
+            width: 180px;
+            position: fixed;
+            background-color: #fff;
+            transition: 0.5% ease;
+            transform: translateX(-180px);
+            top: 0px;
+            left: 0px;
+        }
+
+        #for-nav {
+            color: RGB(15, 47, 74);
+            font-weight: 800;
+            text-align: right;
+            padding: 10px 0;
+            padding-right: 30px;
+            pointer-events: none;
+            margin-left: 20px;
+            margin-top: 30px;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        ul li a {
+            color: #011a41;
+            font-weight: 500px;
+            padding: 5px;
+            display: block;
+            text-transform: capitalize;
+            text-decoration: none;
+            transition: 0.2s ease-out;
+            margin-left: 10px;
+        }
+
+        ul li:hover a {
+            background-color: RGB(15, 47, 74);
+            color: #fff;
+        }
+
+        #menu-toggle {
+            display: none;
+            visibility: hidden;
+        }
+
+        .toggle {
+            position: fixed;
+            height: 30px;
+            width: 30px;
+            z-index: 1;
+            cursor: pointer;
+            top: 0px;
+            left: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+        }
+
+        .toggle .common {
+            position: absolute;
+            height: 2px;
+            width: 20px;
+            background-color: RGB(15, 47, 74);
+            border-radius: 50px;
+            transition: 0.3s ease;
+        }
+
+        .toggle .top_line {
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .toggle .middle_line {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .toggle .bottom_line {
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        input:checked~.toggle .top_line {
+            left: 2px;
+            top: 14px;
+            width: 25px;
+            transform: rotate(45deg);
+        }
+
+        input:checked~.toggle .middle_line {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        input:checked~.toggle .bottom_line {
+            left: 2px;
+            top: 14px;
+            width: 25px;
+            transform: rotate(-45deg);
+        }
+
+        input:checked~.slide {
+            transform: translateX(0);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <label>
+        <input id="menu-toggle" type="checkbox">
+        <div class="toggle">
+            <span class="top_line common"></span>
+            <span class="middle_line common"></span>
+            <span class="bottom_line common"></span>
+        </div>
+        <div class="slide">
+            <h1 id="for-nav">MENU</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </label>
+    <div class="container">
+        <h2>Clash of Clans(gems)</h2>
+        <form ID="topupForm">
+            <label>
+                player_id:</label>
+            <input type="number" placeholder="Enter your Player ID">
+
+            <label for="gems">Select Gems</label>
+            <select id="gems" name="gems" required>
+                <option value="">-- Select Gems --</option>
+                <option value="100">100 Gems</option>
+                <option value="310">310 Gems</option>
+                <option value="520">520 Gems</option>
+                <option value="1060">1060 Gems</option>
+                <option value="2180">2180 Gems</option>
+            </select>
+
+            <label for="payment">Payment Method</label>
+            <select id="payment" name="payment" required>
+                <option value="">-- Select Payment --</option>
+                <option value="paytm">Paytm</option>
+                <option value="googlepay">Google Pay</option>
+                <option value="phonepe">PhonePe</option>
+                <option value="upi">UPI</option>
+                <option value="redeemcode">Play Store Redeem Code</option>
+            </select>
+
+            <div id="redeemcodebox" class="hidden">
+                <label for="redeemCode">Enter Redeem Code:</label>
+                <input type="text" id="redeemCode" name="redeemCode" placeholder="Enter your redeem code" required>
+            </div>
+
+            <button type="submit">Top Up Now</button>
+    </div>
+    </form>
+    <script>
+        document.getElementById('topupForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Your top up request has been submitted!');
+            this.reset();
+        });
+
+        const Payment = document.getElementById("payment");
+        const redeemCodeBox = document.getElementById("redeemcodebox");
+
+        Payment.addEventListener("change", function () {
+            if (this.value === "redeemcode") {
+                redeemCodeBox.classList.remove("hidden");
+            } else {
+                redeemCodeBox.classList.add("hidden");
+            }
+        });
+    </script>
+</body>
+
+</html>
