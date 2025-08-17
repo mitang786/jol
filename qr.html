@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <style>
+        body {
+            background-image: url('back2.jpg');
+            background-size: cover;
+            font-family: 'poppins', sans-serif;
+        }
+
+        #qr-container {
+            max-width: 400px;
+            background: #ffffff00;
+            padding: 24px 32px 32px 32px;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            margin-top: 280px;
+            margin-left: 580px;
+        }
+
+        body:before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url('back2.jpg');
+            filter: blur(5px);
+            z-index: -1;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="qr-container">
+        <canvas id="qr-canvas">for upi payment</canvas>
+    </div>
+    <script>
+        window.onload = function () {
+            var qr = new QRious({
+                element: document.getElementById('qr-canvas'),
+                value: 'for upi payment ',
+                size: 200
+            });
+        };
+    </script>
+    <script>
+        function generateQR() {
+            var qr = new QRious({
+                element: document.getElementById('qr-canvas'),
+                value: document.getElementById('qr-input').value,
+                size: 200
+            });
+        }
+    </script>
+</body>
+
+</html>

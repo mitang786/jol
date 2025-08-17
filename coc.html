@@ -128,7 +128,6 @@
             left: 5px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-
         }
 
         .toggle .common {
@@ -201,21 +200,22 @@
             </ul>
         </div>
     </label>
-    <div class="container">
-        <h2>Clash of Clans(gems)</h2>
-        <form ID="topupForm">
-            <label>
-                player_id:</label>
-            <input type="number" placeholder="Enter your Player ID">
 
-            <label for="gems">Select Gems</label>
-            <select id="gems" name="gems" required>
-                <option value="">-- Select Gems --</option>
-                <option value="100">100 Gems</option>
-                <option value="310">310 Gems</option>
-                <option value="520">520 Gems</option>
-                <option value="1060">1060 Gems</option>
-                <option value="2180">2180 Gems</option>
+    <form id="topupForm">
+        <div class="container">
+            <h2>Clash of Clans</h2>
+
+            <label>Player ID:</label>
+            <input type="number" placeholder="Enter your Player ID" required>
+
+            <label for="GEMS">Select GEMS</label>
+            <select id="GEMS" name="GEMS" required>
+                <option value="">-- Select GEMS --</option>
+                <option value="100">100 GEMS</option>
+                <option value="310">310 GEMS</option>
+                <option value="520">520 GEMS</option>
+                <option value="1060">1060 GEMS</option>
+                <option value="2180">2180 GEMS</option>
             </select>
 
             <label for="payment">Payment Method</label>
@@ -230,12 +230,13 @@
 
             <div id="redeemcodebox" class="hidden">
                 <label for="redeemCode">Enter Redeem Code:</label>
-                <input type="text" id="redeemCode" name="redeemCode" placeholder="Enter your redeem code" required>
+                <input type="text" id="redeemCode" name="redeemCode" placeholder="Enter your redeem code">
             </div>
 
             <button type="submit">Top Up Now</button>
-    </div>
+        </div>
     </form>
+
     <script>
         document.getElementById('topupForm').addEventListener('submit', function (e) {
             e.preventDefault();

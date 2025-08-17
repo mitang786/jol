@@ -128,7 +128,6 @@
             left: 5px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-
         }
 
         .toggle .common {
@@ -201,12 +200,13 @@
             </ul>
         </div>
     </label>
-    <div class="container">
-        <h2>BGMI UC Top Up</h2>
-        <form ID="topupForm">
-            <label>
-                player_id:</label>
-            <input type="number" placeholder="Enter your Player ID">
+
+    <form id="topupForm">
+        <div class="container">
+            <h2>BGMI</h2>
+
+            <label>Player ID:</label>
+            <input type="number" placeholder="Enter your Player ID" required>
 
             <label for="UC">Select UC</label>
             <select id="UC" name="UC" required>
@@ -230,12 +230,13 @@
 
             <div id="redeemcodebox" class="hidden">
                 <label for="redeemCode">Enter Redeem Code:</label>
-                <input type="text" id="redeemCode" name="redeemCode" placeholder="Enter your redeem code" required>
+                <input type="text" id="redeemCode" name="redeemCode" placeholder="Enter your redeem code">
             </div>
 
             <button type="submit">Top Up Now</button>
-    </div>
+        </div>
     </form>
+
     <script>
         document.getElementById('topupForm').addEventListener('submit', function (e) {
             e.preventDefault();
