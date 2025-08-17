@@ -20,6 +20,15 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
             margin-top: 280px;
             margin-left: 580px;
+            text-align: center;
+        }
+
+        #success {
+            display: none;
+            font-size: 22px;
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
         }
 
         body:before {
@@ -30,31 +39,35 @@
             filter: blur(5px);
             z-index: -1;
         }
+
+        #scan-text {
+            font-size: 22px;
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+        }
     </style>
-
-
 </head>
 
 <body>
     <div id="qr-container">
-        <canvas id="qr-canvas">for upi payment</canvas>
+        <canvas id="qr-canvas" onclick="showSuccess()"></canvas>
+        <h3 id="scan-text">Scan the QR</h3>
+        <div id="success">✅ Payment Successful</div>
     </div>
+
     <script>
         window.onload = function () {
             var qr = new QRious({
                 element: document.getElementById('qr-canvas'),
-                value: 'for upi payment ',
-                size: 200
+                value: 'Dummy Payment QR',
+                size: 220
             });
         };
-    </script>
-    <script>
-        function generateQR() {
-            var qr = new QRious({
-                element: document.getElementById('qr-canvas'),
-                value: document.getElementById('qr-input').value,
-                size: 200
-            });
+
+        function showSuccess() {
+            document.getElementById("success").style.display = "block";
+            document.getElementById("scan-text").style.display = "none";
         }
     </script>
 </body>

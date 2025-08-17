@@ -203,29 +203,32 @@
 
     <div class="container">
         <h2>Free Fire Diamond Top Up</h2>
-        <form id="topupForm">
-            <label for="playerId">Free Fire Player ID</label>
-            <input type="number" id="playerId" name="playerId" required placeholder="Enter your Player ID">
+        <form>
+            <div id="topupForm">
+                <label for="playerId">Free Fire Player ID</label>
+                <input type="number" id="playerId" maxlength="10" name="playerId" required
+                    placeholder="Enter your Player ID">
 
-            <label for="diamonds">Select Diamonds</label>
-            <select id="diamonds" name="diamonds" required>
-                <option value="">-- Select Diamonds --</option>
-                <option value="100">100 Diamonds</option>
-                <option value="310">310 Diamonds</option>
-                <option value="520">520 Diamonds</option>
-                <option value="1060">1060 Diamonds</option>
-                <option value="2180">2180 Diamonds</option>
-            </select>
+                <label for="diamonds">Select Diamonds</label>
+                <select id="diamonds" name="diamonds" required>
+                    <option value="">-- Select Diamonds --</option>
+                    <option value="100">100 Diamonds</option>
+                    <option value="310">310 Diamonds</option>
+                    <option value="520">520 Diamonds</option>
+                    <option value="1060">1060 Diamonds</option>
+                    <option value="2180">2180 Diamonds</option>
+                </select>
 
-            <label for="payment">Payment Method</label>
-            <select id="payment" name="payment" required>
-                <option value="">-- Select Payment --</option>
-                <option value="paytm">Paytm</option>
-                <option value="googlepay">Google Pay</option>
-                <option value="phonepe">PhonePe</option>
-                <option value="upi">UPI</option>
-                <option value="redeemcode">Play Store Redeem Code</option>
-            </select>
+                <label for="payment">Payment Method</label>
+                <select id="payment" name="payment" required>
+                    <option value="">-- Select Payment --</option>
+                    <option value="paytm">Paytm</option>
+                    <option value="googlepay">Google Pay</option>
+                    <option value="phonepe">PhonePe</option>
+                    <option value="upi">UPI</option>
+                    <option value="redeemcode">Play Store Redeem Code</option>
+                </select>
+            </div>
 
             <div id="redeemcodebox" class="hidden">
                 <label for="redeemCode">Enter Redeem Code:</label>
@@ -236,23 +239,46 @@
         </form>
     </div>
     <script>
-        document.getElementById('topupForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Your top up request has been submitted!');
-            this.reset();
-        });
-
-        const Payment = document.getElementById("payment");
+        const form = document.querySelector("form");
+        const payment = document.getElementById("payment");
         const redeemCodeBox = document.getElementById("redeemcodebox");
 
-        Payment.addEventListener("change", function () {
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            if (payment.value === "redeemcode") {
+                const redeemCode = document.getElementById("redeemCode").value;
+                if (!redeemCode) {
+                    alert("Please enter a redeem code.");
+                    return;
+                }
+                alert("Your top up payment with redeem code was successful!");
+                form.reset();
+                redeemCodeBox.classList.add("hidden");
+            } else {
+                window.location.href = "qr.html";
+            }
+        });
+
+        payment.addEventListener("change", function () {
             if (this.value === "redeemcode") {
                 redeemCodeBox.classList.remove("hidden");
             } else {
                 redeemCodeBox.classList.add("hidden");
             }
         });
+
+
+        const playerId = document.getElementById("playerId");
+        playerId.addEventListener("input", function () {
+            if (this.value.length > 10) {
+                this.value = this.value.slice(0, 10);
+            }
+        });
+
     </script>
+
+
 </body>
 
 </html>

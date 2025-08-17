@@ -206,7 +206,7 @@
             <h2>CALL OF DUTY CP (COD POINTS)</h2>
 
             <label>Player ID:</label>
-            <input type="number" placeholder="Enter your Player ID" required>
+            <input type="number" id="playerId" maxlength="10" placeholder="Enter your Player ID" required>
 
             <label for="CP">Select CP</label>
             <select id="CP" name="CP" required>
@@ -238,22 +238,43 @@
     </form>
 
     <script>
-        document.getElementById('topupForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Your top up request has been submitted!');
-            this.reset();
-        });
-
-        const Payment = document.getElementById("payment");
+        const form = document.querySelector("form");
+        const payment = document.getElementById("payment");
         const redeemCodeBox = document.getElementById("redeemcodebox");
 
-        Payment.addEventListener("change", function () {
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            if (payment.value === "redeemcode") {
+                const redeemCode = document.getElementById("redeemCode").value;
+                if (!redeemCode) {
+                    alert("Please enter a redeem code.");
+                    return;
+                }
+                alert("Your top up payment with redeem code was successful!");
+                form.reset();
+                redeemCodeBox.classList.add("hidden");
+            } else {
+                window.location.href = "qr.html";
+            }
+        });
+
+        payment.addEventListener("change", function () {
             if (this.value === "redeemcode") {
                 redeemCodeBox.classList.remove("hidden");
             } else {
                 redeemCodeBox.classList.add("hidden");
             }
         });
+
+
+        const playerId = document.getElementById("playerId");
+        playerId.addEventListener("input", function () {
+            if (this.value.length > 10) {
+                this.value = this.value.slice(0, 10);
+            }
+        });
+
     </script>
 </body>
 
