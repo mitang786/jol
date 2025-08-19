@@ -4,31 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>QR Code Generator</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <style>
         body {
             background-image: url('back2.jpg');
             background-size: cover;
             font-family: 'poppins', sans-serif;
-        }
-
-        #qr-container {
-            max-width: 400px;
-            background: #ffffff00;
-            padding: 24px 32px 32px 32px;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-            margin-top: 280px;
-            margin-left: 580px;
-            text-align: center;
-        }
-
-        #success {
-            display: none;
-            font-size: 22px;
-            color: green;
-            font-weight: bold;
-            margin-top: 20px;
         }
 
         body:before {
@@ -40,36 +20,19 @@
             z-index: -1;
         }
 
-        #scan-text {
-            font-size: 22px;
-            color: green;
-            font-weight: bold;
-            margin-top: 20px;
+        #qr-img {
+            margin-left: 650px;
+            margin-top: 250px;
+            color: white;
         }
     </style>
 </head>
 
 <body>
-    <div id="qr-container">
-        <canvas id="qr-canvas" onclick="showSuccess()"></canvas>
-        <h3 id="scan-text">Scan the QR</h3>
-        <div id="success">✅ Payment Successful</div>
+    <div id="qr-img">
+        <h2>Scan the QR Code</h2><br><br>
+        <img src="qr.jpg" alt="QR Code" style="display: block; width: 250px; height: 250px;">
     </div>
-
-    <script>
-        window.onload = function () {
-            var qr = new QRious({
-                element: document.getElementById('qr-canvas'),
-                value: 'Dummy Payment QR',
-                size: 220
-            });
-        };
-
-        function showSuccess() {
-            document.getElementById("success").style.display = "block";
-            document.getElementById("scan-text").style.display = "none";
-        }
-    </script>
 </body>
 
 </html>
