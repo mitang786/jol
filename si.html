@@ -1,158 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Free Fire Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Page</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-     background-color: #444444;
-      background-size: cover;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      background: #111;
     }
 
     .container {
-      margin-top: 10px;
-      margin-left: 450px;
-      background: rgba(255, 255, 255, 0.568);
-      padding: 40px;
-      border-radius: 15px;
-      width: 350px;
-      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.205);
-      text-align: center;
-      margin-top: 20px;
-      height: 550px;
-    }
-
-    .logo {
-      height: 40px;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      color: white;
-      margin: 10px 0 5px;
-    }
-
-    p {
-      color: white;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      text-align: left;
-      margin-top: 10px;
-      margin-bottom: 5px;
-      font-size: 14px;
-      color: white;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      font-size: 14px;
-    }
-
-    .options {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 14px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(255, 85, 0, 0.4);
+      width: 700px;
+    }
+
+    .welcome-box {
+      flex: 1;
+      background: linear-gradient(135deg, #c44, #f60);
+      color: white;
+      padding: 40px 30px;
+    }
+
+    .welcome-box h2 {
+      font-size: 28px;
       margin-bottom: 15px;
     }
 
-    .options label {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin: 0;
+    .welcome-box p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .form-box {
+      flex: 1;
+      padding: 40px 30px;
+      background: #111;
+      color: white;
+    }
+
+    .form-box h2 {
+      margin-bottom: 25px;
+      font-size: 24px;
+    }
+
+    .input-field {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-field input {
+      width: 100%;
+      padding: 12px 40px 12px 12px;
+      border: none;
+      border-bottom: 2px solid #666;
+      background: transparent;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .input-field input:focus {
+      border-color: #f60;
+    }
+
+    .input-field i {
+      position: absolute;
+      right: 10px;
+      top: 12px;
+      color: #888;
     }
 
     .btn {
       width: 100%;
-      background-color: #5a4bff;
-      color: white;
       padding: 12px;
       border: none;
-      border-radius: 8px;
+      border-radius: 25px;
+      background: linear-gradient(to right, #c44, #f60);
+      color: white;
       font-size: 16px;
       cursor: pointer;
+      transition: 0.3s;
     }
 
-    .divider {
-      margin: 15px 0;
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .signin-text {
+      margin-top: 15px;
+      text-align: center;
       font-size: 14px;
-      color: #aaa;
+      color: #bbb;
     }
 
-    .social-login button {
-      width: 48%;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-size: 14px;
-      cursor: pointer;
-      margin: 5px 1%;
-    }
-
-    .facebook {
-      background-color: #4267B2;
-    }
-
-    .google {
-      background-color: #DB4437;
-    }
-
-    a {
-      color: #5a4bff;
+    .signin-text a {
+      color: #f60;
       text-decoration: none;
+      font-weight: bold;
     }
 
-    a:hover {
+    .signin-text a:hover {
       text-decoration: underline;
     }
   </style>
+  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container">
-    <form>
-      <h2>JHOL MAL TOP-UP</h2>
-      <p>Login to continue</p>
+    <!-- Welcome Section -->
+    <div class="welcome-box">
+      <h2>WELCOME!</h2>
+      <p>We’re delighted to have you here. If you need any assistance, feel free to reach out.</p>
+    </div>
 
-      <label>Email / Username</label>
-      <input type="text" placeholder="Enter your email or username" required>
-
-      <label>Password</label>
-      <input type="password" placeholder="Enter your password" required>
-
-      <!-- ✅ Clean and aligned options -->
-      <div class="options">
-        <label><input type="checkbox" /> Remember me</label>
-        <a href="#">Forgot Password?</a>
-      </div>
-
-      <button type="submit" class="btn">Login</button>
-
-      <div class="divider">OR</div>
-
-      <div class="social-login">
-        <button class="facebook">Facebook</button>
-        <button class="google">Google</button>
-      </div>
-
-      <p>Don’t have an account? <a href="signup.html">Sign Up</a></p>
-    </form>
+    <!-- Form Section -->
+    <div class="form-box">
+      <h2>Register</h2>
+      <form>
+        <div class="input-field">
+          <input type="text" placeholder="Username" required>
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="input-field">
+          <input type="email" placeholder="Email" required>
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="input-field">
+          <input type="password" placeholder="Password" required>
+          <i class="fas fa-lock"></i>
+        </div>
+        <button type="submit" class="btn">Register</button>
+      </form>
+      <p class="signin-text">you already have account? <a href="signup.html">Sign In</a></p>
+    </div>
   </div>
 </body>
 </html>
