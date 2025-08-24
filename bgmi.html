@@ -4,60 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BGMI UC Top Up</title>
     <style>
-        .hidden {
-            display: none;
-        }
-
-        h2 {
-            text-align: center;
-            color: white;
-        }
-
-        .container {
-            max-width: 400px;
-            margin: 40px auto;
-            background: #ffffff00;
-            padding: 24px 32px 32px 32px;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-            font-weight: bold;
-        }
-
-        label {
-            display: block;
-            margin-top: 16px;
-            margin-bottom: 6px;
-            color: white;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 8px 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 12px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #ffbe0b;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background: rgba(8, 229, 8, 0.923);
-        }
-
         body {
             font-family: Arial, sans-serif;
             background-image: url('pubg 1.jpg');
@@ -70,148 +18,110 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'poppins', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .slide {
-            height: 100%;
-            width: 180px;
+        /* Floating Home button (bottom-left) */
+        .home-btn {
             position: fixed;
-            background-color: #fff;
-            transition: 0.5% ease;
-            transform: translateX(-180px);
-            top: 0px;
-            left: 0px;
-        }
-
-        #for-nav {
-            color: RGB(15, 47, 74);
-            font-weight: 800;
-            text-align: right;
-            padding: 10px 0;
-            padding-right: 30px;
-            pointer-events: none;
-            margin-left: 20px;
-            margin-top: 30px;
-        }
-
-        ul li {
-            list-style: none;
-        }
-
-        ul li a {
+            bottom: 20px;
+            left: 20px;
+            background-color: #ffbe0b;
             color: #011a41;
-            font-weight: 500px;
-            padding: 5px;
-            display: block;
-            text-transform: capitalize;
+            padding: 12px 18px;
+            border-radius: 8px;
             text-decoration: none;
-            transition: 0.2s ease-out;
-            margin-left: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
 
-        ul li:hover a {
-            background-color: RGB(15, 47, 74);
+        .home-btn:hover {
+            background-color: rgba(8, 229, 8, 0.923);
+            color: white;
+        }
+
+        /* Main form container */
+        .container {
+            max-width: 400px;
+            margin: 60px auto;
+            background: rgba(0, 0, 0, 0.65);
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ffbe0b;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
             color: #fff;
+            font-size: 14px;
         }
 
-        #menu-toggle {
-            display: none;
-            visibility: hidden;
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 15px;
+            transition: all 0.3s ease;
         }
 
-        .toggle {
-            position: fixed;
-            height: 30px;
-            width: 30px;
-            z-index: 1;
+        input:focus,
+        select:focus {
+            border-color: #ffbe0b;
+            outline: none;
+            box-shadow: 0 0 8px #ffbe0b;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #ffbe0b;
+            color: #011a41;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
-            top: 0px;
-            left: 5px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+            transition: all 0.3s ease;
         }
 
-        .toggle .common {
-            position: absolute;
-            height: 2px;
-            width: 20px;
-            background-color: RGB(15, 47, 74);
-            border-radius: 50px;
-            transition: 0.3s ease;
+        button:hover {
+            background: rgba(8, 229, 8, 0.923);
+            color: white;
         }
 
-        .toggle .top_line {
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .toggle .middle_line {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .toggle .bottom_line {
-            top: 70%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        input:checked~.toggle .top_line {
-            left: 2px;
-            top: 14px;
-            width: 25px;
-            transform: rotate(45deg);
-        }
-
-        input:checked~.toggle .middle_line {
-            opacity: 0;
-            transform: translateX(20px);
-        }
-
-        input:checked~.toggle .bottom_line {
-            left: 2px;
-            top: 14px;
-            width: 25px;
-            transform: rotate(-45deg);
-        }
-
-        input:checked~.slide {
-            transform: translateX(0);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 
 <body>
-    <label>
-        <input id="menu-toggle" type="checkbox">
-        <div class="toggle">
-            <span class="top_line common"></span>
-            <span class="middle_line common"></span>
-            <span class="bottom_line common"></span>
-        </div>
-        <div class="slide">
-            <h1 id="for-nav">MENU</h1>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </label>
 
-    <form id="topupForm">
-        <div class="container">
-            <h2>BGMI</h2>
+    <!-- Floating home button -->
+    <a href="index.html" class="home-btn">🏠 Home</a>
 
-            <label>Player ID:</label>
+    <div class="container">
+        <h2>BGMI UC Top Up</h2>
+        <form id="topupForm">
+            <label for="playerId">🎮 Player ID</label>
             <input type="number" id="playerId" maxlength="10" placeholder="Enter your Player ID" required>
 
-            <label for="UC">Select UC</label>
-            <select id="UC" name="UC" required>
+            <label for="uc">💰 Select UC</label>
+            <select id="uc" name="uc" required>
                 <option value="">-- Select UC --</option>
                 <option value="100">100 UC</option>
                 <option value="310">310 UC</option>
@@ -220,7 +130,7 @@
                 <option value="2180">2180 UC</option>
             </select>
 
-            <label for="payment">Payment Method</label>
+            <label for="payment">💳 Payment Method</label>
             <select id="payment" name="payment" required>
                 <option value="">-- Select Payment --</option>
                 <option value="paytm">Paytm</option>
@@ -231,13 +141,13 @@
             </select>
 
             <div id="redeemcodebox" class="hidden">
-                <label for="redeemCode">Enter Redeem Code:</label>
+                <label for="redeemCode">🔑 Redeem Code</label>
                 <input type="text" id="redeemCode" name="redeemCode" placeholder="Enter your redeem code">
             </div>
 
-            <button type="submit">Top Up Now</button>
-        </div>
-    </form>
+            <button type="submit">⚡ Confirm Top Up</button>
+        </form>
+    </div>
 
     <script>
         const form = document.querySelector("form");
@@ -253,7 +163,7 @@
                     alert("Please enter a redeem code.");
                     return;
                 }
-                alert("Your top up payment with redeem code was successful!");
+                alert("✅ Your UC Top Up using redeem code was successful!");
                 form.reset();
                 redeemCodeBox.classList.add("hidden");
             } else {
@@ -269,14 +179,12 @@
             }
         });
 
-
         const playerId = document.getElementById("playerId");
         playerId.addEventListener("input", function () {
             if (this.value.length > 10) {
                 this.value = this.value.slice(0, 10);
             }
         });
-
     </script>
 
 </body>

@@ -4,189 +4,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Jhol Mal Top Up</title>
     <style>
-        #body {
-            background-image: url('back2.jpg');
-            background-size: cover;
-        }
-
-        #body:before {
-            content: "";
+        .background-blur {
             position: fixed;
             inset: 0;
-            background: url('back2.jpg');
-            filter: blur(5px);
+            width: 100vw;
+            height: 100vh;
             z-index: -1;
+            background: url('back2.jpg') center center/cover no-repeat;
+            filter: blur(5px);
+            pointer-events: none;
         }
 
-        * {
+        body {
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'poppins', sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: none;
+            color: white;
+            min-height: 100vh;
         }
 
+        header {
+            background: linear-gradient(90deg, #ff512f, #dd2476);
+            color: #fff;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px 0 14px 0;
+            letter-spacing: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.23);
+            border-bottom-left-radius: 36px;
+            border-bottom-right-radius: 36px;
+        }
+
+        /* Sidebar Menu */
         .slide {
             height: 100%;
-            width: 180px;
-            position: absolute;
-            background-color: #fff;
-            transition: 0.5% ease;
-            transform: translateX(-180px);
+            width: 210px;
+            position: fixed;
+            background: rgba(255, 255, 255, .95);
+            transition: 0.5s ease;
+            transform: translateX(-210px);
+            top: 0;
+            left: 0;
+            z-index: 20;
+            box-shadow: 2px 0 22px rgba(15, 47, 74, .13);
+            border-top-right-radius: 26px;
+            border-bottom-right-radius: 26px;
+            overflow: hidden;
         }
 
         #for-nav {
-            color: RGB(15, 47, 74);
-            font-weight: 800;
-            text-align: right;
-            padding: 10px 0;
-            padding-right: 30px;
-            pointer-events: none;
-            margin-left: 20px;
-            margin-top: 30px;
+            color: #0f2f4a;
+            font-weight: 900;
+            text-align: center;
+            font-size: 22px;
+            border-bottom: 2px solid #eee;
+            margin: 0;
+            padding: 24px 0 16px 0;
+            background: linear-gradient(90deg, #f7cac9, #92a8d1);
+        }
+
+        ul {
+            margin-top: 15px;
+            padding-left: 10px;
         }
 
         ul li {
             list-style: none;
+            margin-bottom: 10px;
         }
 
         ul li a {
-            color: #011a41;
-            font-weight: 500px;
-            padding: 5px;
-            display: block;
-            text-transform: capitalize;
+            color: #193659;
+            font-weight: 600;
+            padding: 10px 25px;
+            border-radius: 12px;
             text-decoration: none;
-            transition: 0.2s ease-out;
-            margin-left: 10px;
+            display: block;
+            transition: 0.3s;
         }
 
-        ul li:hover a {
-            background-color: RGB(15, 47, 74);
+        ul li a:hover {
+            background-color: #193659;
             color: #fff;
+            transform: translateX(8px);
         }
 
         #menu-toggle {
             display: none;
-            visibility: hidden;
         }
 
         .toggle {
             position: absolute;
-            height: 30px;
-            width: 30px;
-            z-index: 1;
+            height: 40px;
+            width: 40px;
+            z-index: 30;
             cursor: pointer;
-            top: 0px;
-            left: 5px;
+            top: 24px;
+            left: 24px;
             background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-
+            border-radius: 32px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.13);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .toggle .common {
             position: absolute;
-            height: 2px;
-            width: 20px;
-            background-color: RGB(15, 47, 74);
-            border-radius: 50px;
-            transition: 0.3s ease;
+            height: 3px;
+            width: 24px;
+            background-color: #0f2f4a;
+            border-radius: 24px;
+            transition: 0.3s;
         }
 
         .toggle .top_line {
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 11px;
         }
 
         .toggle .middle_line {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 18px;
         }
 
         .toggle .bottom_line {
-            top: 70%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 25px;
         }
 
         input:checked~.toggle .top_line {
-            left: 2px;
-            top: 14px;
-            width: 25px;
             transform: rotate(45deg);
+            top: 18px;
         }
 
         input:checked~.toggle .middle_line {
             opacity: 0;
-            transform: translateX(20px);
         }
 
         input:checked~.toggle .bottom_line {
-            left: 2px;
-            top: 14px;
-            width: 25px;
             transform: rotate(-45deg);
+            top: 18px;
         }
 
         input:checked~.slide {
             transform: translateX(0);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
 
+        /* Profile box - right side */
+        .profile-container {
+            display: flex;
+            justify-content: flex-end;
+            /* align to right */
+            padding: 40px 40px 0 0;
+            /* space from edges */
+        }
+
+        .profile-box {
+            background: rgba(255, 255, 255, 0);
+            color: #f1f1f1;
+            padding: 18px 18px 10px 18px;
+            text-align: center;
+            width: 230px;
+        }
+
+        .profile-box img {
+            width: 74px;
+            height: 74px;
+            border-radius: 50%;
+            margin-bottom: 8px;
+            border: 2.5px solid #ed6ea0;
+            box-shadow: 0 2px 6px rgba(255, 76, 96, 0.09);
+        }
+
+        .profile-box h3 {
+            margin-bottom: 8px;
+        }
+
+        .profile-box button {
+            margin-top: 8px;
+            padding: 7px 16px;
+            background: linear-gradient(90deg, #ed6ea0, #ec8c69);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: box-shadow 0.2s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+        }
+
+        .profile-box button:hover {
+            box-shadow: 0 4px 12px #ec8c69b9;
+            background: linear-gradient(90deg, #FFA17F, #00223E);
+        }
+
+        /* Game grid */
         .img-container {
             display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 55px;
+            margin-top: 40px;
+            /* space below profile */
         }
 
-        .for-ff-img:hover img {
-            scale: 1.2;
+        .game-card {
+            background: rgba(255, 255, 255, 0.14);
+            border-radius: 18px;
+            box-shadow: 0 6px 18px rgba(55, 55, 64, 0.15);
+            padding: 24px 16px 16px 16px;
+            text-align: center;
+            width: 220px;
+            position: relative;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .game-card:hover {
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.17);
+            transform: translateY(-6px) scale(1.04);
+        }
+
+        .game-card img {
+            width: 130px;
             border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 18px rgba(44, 84, 214, 0.09);
+            margin-bottom: 18px;
+            background: #fff;
         }
 
-        .for-ff-img {
-            overflow: hidden;
-            display: block;
-            transition: .3s;
+        .game-card img:hover {
+            transform: scale(1.17);
+            box-shadow: 0 6px 24px #fb7087a1;
         }
 
-        .for-bgmi-img:hover img {
-            scale: 1.2;
-            border-radius: 10px;
+        .game-title {
+            font-size: 19px;
+            color: #ed6ea0;
+            margin: 0 0 10px 0;
+            font-weight: 700;
         }
 
-        .for-bgmi-img {
-            overflow: hidden;
-            display: block;
-            transition: .3s;
+        .topup-btn {
+            padding: 9px 32px;
+            border-radius: 8px;
+            border: none;
+            background: linear-gradient(90deg, #f857a6, #ff5858);
+            color: #fff;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 10px;
+            box-shadow: 0 2px 7px #ed6ea077;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
         }
 
-        .for-cod-img:hover img {
-            scale: 1.2;
-            border-radius: 10px;
-        }
-
-        .for-cod-img {
-            overflow: hidden;
-            display: block;
-            transition: .3s;
-        }
-
-        .for-coc-img:hover img {
-            scale: 1.2;
-            border-radius: 10px;
-        }
-
-        .for-coc-img {
-            overflow: hidden;
-            display: block;
-            transition: .3s;
+        .topup-btn:hover {
+            background: linear-gradient(90deg, #314755, #26a0da);
+            box-shadow: 0 5px 16px #26a0da93;
         }
     </style>
 </head>
 
-<body id="body">
+<body>
+    <div class="background-blur"></div>
+
+    <!-- Header -->
+    <header>
+        🎮 Jhol Mal Top Up
+    </header>
+
+    <!-- Sidebar Menu -->
     <label>
         <input id="menu-toggle" type="checkbox">
         <div class="toggle">
@@ -197,36 +286,62 @@
         <div class="slide">
             <h1 id="for-nav">MENU</h1>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="about.html">ℹ️ About</a></li>
+                <li><a href="contact.html">📞 Contact</a></li>
             </ul>
         </div>
     </label>
-    <div class="img-container">
-        <div class="for-ff-img">
-            <img src="ff.png" onclick="location.href='ff.html' " alt="Free Fire" width="180px;"
-                style="margin-top: 200px;margin-left: 200px;">
+
+    <!-- Profile Box (Right aligned) -->
+    <div class="profile-container">
+        <div class="profile-box" id="profileBox">
+            <img src="icon.jpg" alt="Profile">
+            <h3 id="profileName"></h3>
+            <p id="profileEmail"></p>
+            <button onclick="logout()">Logout</button>
         </div>
-
-
-        <div class="for-bgmi-img">
-            <img src="bgmi.webp" onclick="location.href='bgmi.html' " alt="BGMI" width="180px;"
-                style="margin-top: 200px;margin-left: 200px;">
-        </div>
-
-        <div class="for-cod-img">
-            <img src="cod.jpg" onclick="location.href='cod.html' " alt="COD" width="180px;"
-                style="margin-top: 200px;margin-left: 200px;">
-        </div>
-
-        <div class="for-coc-img">
-            <img src="coc.png" onclick="location.href='coc.html' " alt="Clash of Clans" width="180px;"
-                style="margin-top: 200px;margin-left: 200px;">
-        </div>
-
     </div>
 
+    <!-- Games Section -->
+    <div class="img-container">
+        <div class="game-card">
+            <img src="ff.png" onclick="location.href='ff.html'" alt="Free Fire">
+            <div class="game-title">Free Fire</div>
+            <button class="topup-btn" onclick="location.href='ff.html'">Top Up Now</button>
+        </div>
+        <div class="game-card">
+            <img src="bgmi.webp" onclick="location.href='bgmi.html'" alt="BGMI">
+            <div class="game-title">BGMI</div>
+            <button class="topup-btn" onclick="location.href='bgmi.html'">Top Up Now</button>
+        </div>
+        <div class="game-card">
+            <img src="cod.jpg" onclick="location.href='cod.html'" alt="COD">
+            <div class="game-title">Call of Duty</div>
+            <button class="topup-btn" onclick="location.href='cod.html'">Top Up Now</button>
+        </div>
+        <div class="game-card">
+            <img src="coc.png" onclick="location.href='coc.html'" alt="Clash of Clans">
+            <div class="game-title">Clash of Clans</div>
+            <button class="topup-btn" onclick="location.href='coc.html'">Top Up Now</button>
+        </div>
+    </div>
+
+    <script>
+        // Show profile from localStorage
+        const username = localStorage.getItem("username");
+        if (username) {
+            document.getElementById("profileName").innerText = username;
+        } else {
+            alert("Please login first!");
+            window.location.href = "signup.html";
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = "signup.html";
+        }
+    </script>
 </body>
 
 </html>

@@ -2,62 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clash of Clans GEMS Top Up</title>
     <style>
-        .hidden {
-            display: none;
-        }
-
-        h2 {
-            text-align: center;
-            color: white;
-        }
-
-        .container {
-            max-width: 400px;
-            margin: 40px auto;
-            background: #ffffff00;
-            padding: 24px 32px 32px 32px;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-            font-weight: bold;
-        }
-
-        label {
-            display: block;
-            margin-top: 16px;
-            margin-bottom: 6px;
-            color: white;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 8px 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 12px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #ffbe0b;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background: rgba(8, 229, 8, 0.923);
-        }
-
         body {
             font-family: Arial, sans-serif;
             background-image: url('coc1.jpg');
@@ -70,147 +18,122 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'poppins', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .slide {
-            height: 100%;
-            width: 180px;
+        /* Floating Home Button */
+        .home-btn {
             position: fixed;
-            background-color: #fff;
-            transition: 0.5% ease;
-            transform: translateX(-180px);
-            top: 0px;
-            left: 0px;
-        }
-
-        #for-nav {
-            color: RGB(15, 47, 74);
-            font-weight: 800;
-            text-align: right;
-            padding: 10px 0;
-            padding-right: 30px;
-            pointer-events: none;
-            margin-left: 20px;
-            margin-top: 30px;
-        }
-
-        ul li {
-            list-style: none;
-        }
-
-        ul li a {
+            bottom: 20px;
+            left: 20px;
+            background-color: #ffbe0b;
             color: #011a41;
-            font-weight: 500px;
-            padding: 5px;
-            display: block;
-            text-transform: capitalize;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
             text-decoration: none;
-            transition: 0.2s ease-out;
-            margin-left: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
         }
 
-        ul li:hover a {
-            background-color: RGB(15, 47, 74);
-            color: #fff;
+        .home-btn:hover {
+            background-color: rgba(8, 229, 8, 0.923);
+            color: white;
         }
 
-        #menu-toggle {
-            display: none;
-            visibility: hidden;
+        .container {
+            max-width: 400px;
+            margin: 60px auto;
+            background: rgba(0, 0, 0, 0.65);
+            padding: 28px 32px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+            color: #ffbe0b;
         }
 
-        .toggle {
-            position: fixed;
-            height: 30px;
-            width: 30px;
-            z-index: 1;
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            color: #ffbe0b;
+            font-weight: 900;
+            text-shadow: 0 0 8px #ffbe0b;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffbe0b;
+            font-size: 14px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px 12px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #222;
+            color: white;
+        }
+
+        input::placeholder {
+            color: #bbb;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #ffbe0b;
+            outline: none;
+            box-shadow: 0 0 10px #ffbe0b;
+            background: #333;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            background: #ffbe0b;
+            color: #011a41;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
-            top: 0px;
-            left: 5px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 190, 11, 0.7);
         }
 
-        .toggle .common {
-            position: absolute;
-            height: 2px;
-            width: 20px;
-            background-color: RGB(15, 47, 74);
-            border-radius: 50px;
-            transition: 0.3s ease;
+        button:hover {
+            background: rgba(8, 229, 8, 0.923);
+            color: white;
+            box-shadow: 0 6px 20px rgba(8, 229, 8, 0.8);
         }
 
-        .toggle .top_line {
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .toggle .middle_line {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .toggle .bottom_line {
-            top: 70%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        input:checked~.toggle .top_line {
-            left: 2px;
-            top: 14px;
-            width: 25px;
-            transform: rotate(45deg);
-        }
-
-        input:checked~.toggle .middle_line {
-            opacity: 0;
-            transform: translateX(20px);
-        }
-
-        input:checked~.toggle .bottom_line {
-            left: 2px;
-            top: 14px;
-            width: 25px;
-            transform: rotate(-45deg);
-        }
-
-        input:checked~.slide {
-            transform: translateX(0);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 
 <body>
-    <label>
-        <input id="menu-toggle" type="checkbox">
-        <div class="toggle">
-            <span class="top_line common"></span>
-            <span class="middle_line common"></span>
-            <span class="bottom_line common"></span>
-        </div>
-        <div class="slide">
-            <h1 id="for-nav">MENU</h1>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </label>
+    <!-- Floating Home Button -->
+    <a href="index.html" class="home-btn">🏠 Home</a>
 
-    <form id="topupForm">
+    <form id="topupForm" autocomplete="off">
         <div class="container">
-            <h2>Clash of Clans</h2>
+            <h2>Clash of Clans GEMS</h2>
 
-            <label>Player ID:</label>
-            <input type="number" id="playerId" maxlength="10" placeholder="Enter your Player ID" required>
+            <label for="playerId">🎮 Player ID:</label>
+            <input type="number" id="playerId" maxlength="10" placeholder="Enter your Player ID" required
+                autocomplete="off" />
 
-            <label for="GEMS">Select GEMS</label>
+            <label for="GEMS">💎 Select GEMS</label>
             <select id="GEMS" name="GEMS" required>
                 <option value="">-- Select GEMS --</option>
                 <option value="100">100 GEMS</option>
@@ -220,7 +143,7 @@
                 <option value="2180">2180 GEMS</option>
             </select>
 
-            <label for="payment">Payment Method</label>
+            <label for="payment">💳 Payment Method</label>
             <select id="payment" name="payment" required>
                 <option value="">-- Select Payment --</option>
                 <option value="paytm">Paytm</option>
@@ -231,29 +154,38 @@
             </select>
 
             <div id="redeemcodebox" class="hidden">
-                <label for="redeemCode">Enter Redeem Code:</label>
-                <input type="text" id="redeemCode" name="redeemCode" placeholder="Enter your redeem code">
+                <label for="redeemCode">🔑 Enter Redeem Code:</label>
+                <input type="text" id="redeemCode" name="redeemCode" placeholder="Enter your redeem code"
+                    autocomplete="off" />
             </div>
 
-            <button type="submit">Top Up Now</button>
+            <button type="submit">⚡ Top Up Now</button>
         </div>
     </form>
 
     <script>
-        const form = document.querySelector("form");
+        const form = document.getElementById("topupForm");
         const payment = document.getElementById("payment");
         const redeemCodeBox = document.getElementById("redeemcodebox");
 
-        form.addEventListener("submit", function (e) {
+        payment.addEventListener("change", () => {
+            if (payment.value === "redeemcode") {
+                redeemCodeBox.classList.remove("hidden");
+            } else {
+                redeemCodeBox.classList.add("hidden");
+            }
+        });
+
+        form.addEventListener("submit", (e) => {
             e.preventDefault();
 
             if (payment.value === "redeemcode") {
-                const redeemCode = document.getElementById("redeemCode").value;
+                const redeemCode = document.getElementById("redeemCode").value.trim();
                 if (!redeemCode) {
                     alert("Please enter a redeem code.");
                     return;
                 }
-                alert("Your top up payment with redeem code was successful!");
+                alert("✅ Your top up payment with redeem code was successful!");
                 form.reset();
                 redeemCodeBox.classList.add("hidden");
             } else {
@@ -261,22 +193,12 @@
             }
         });
 
-        payment.addEventListener("change", function () {
-            if (this.value === "redeemcode") {
-                redeemCodeBox.classList.remove("hidden");
-            } else {
-                redeemCodeBox.classList.add("hidden");
-            }
-        });
-
-
         const playerId = document.getElementById("playerId");
-        playerId.addEventListener("input", function () {
-            if (this.value.length > 10) {
-                this.value = this.value.slice(0, 10);
+        playerId.addEventListener("input", () => {
+            if (playerId.value.length > 10) {
+                playerId.value = playerId.value.slice(0, 10);
             }
         });
-
     </script>
 </body>
 

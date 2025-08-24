@@ -37,7 +37,6 @@
       transform: rotateY(180deg);
     }
 
-    /* Shared container style */
     .container {
       display: flex;
       width: 100%;
@@ -222,15 +221,19 @@
 
   <script>
     document.getElementById("form").addEventListener("submit", function (e) {
-      e.preventDefault(); // stop normal submit
-
+      e.preventDefault();
 
       let user = document.getElementById("username").value.trim();
       let email = document.getElementById("email").value.trim();
       let pass = document.getElementById("password").value.trim();
 
       if (user && email && pass) {
-        // ✅ redirect after successful "register"
+        // ✅ Save to localStorage
+        localStorage.setItem("username", user);
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", pass);
+
+        // ✅ redirect to index.html
         window.location.href = "index.html";
       } else {
         alert("Please fill all fields!");

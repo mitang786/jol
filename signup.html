@@ -182,6 +182,8 @@
       let pass = document.getElementById("password").value.trim();
 
       if (user && pass) {
+        localStorage.setItem("username", user);
+        localStorage.setItem("password", pass);
         // go to index.html
         window.location.href = "index.html";
       } else {
