@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
+  <title>Flip Login</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #121212;
+      background: linear-gradient(135deg, #0d0d0d, #1c1c1c);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-    }
-
-    .login-container {
-      display: flex;
-      background: linear-gradient(135deg, #1c1c1c 50%, #b64524 50%);
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255, 87, 34, 0.6);
       overflow: hidden;
-      width: 700px;
-      max-width: 95%;
     }
 
+    .card {
+      width: 750px;
+      height: 420px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255, 87, 34, 0.6);
+      background: #1c1c1c;
+      color: #fff;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* Front (Login) */
     .login-form {
       flex: 1;
       padding: 40px;
-      background: #1c1c1c;
-      color: #fff;
     }
 
     .login-form h2 {
-      margin-bottom: 20px;
-      font-size: 24px;
+      margin-bottom: 25px;
+      font-size: 26px;
       font-weight: bold;
+      color: #ff7043;
+      text-shadow: 0 0 8px rgba(255, 87, 34, 0.8);
     }
 
     .input-group {
@@ -50,12 +54,14 @@
       border-bottom: 2px solid #444;
       background: none;
       color: #fff;
-      font-size: 14px;
+      font-size: 15px;
       outline: none;
+      transition: 0.3s;
     }
 
     .input-group input:focus {
       border-bottom: 2px solid #ff5722;
+      box-shadow: 0 4px 8px rgba(255, 87, 34, 0.4);
     }
 
     .input-group .icon {
@@ -63,23 +69,28 @@
       right: 10px;
       top: 50%;
       transform: translateY(-50%);
-      color: #999;
+      font-size: 18px;
+      color: #ff7043;
+      pointer-events: none;
     }
 
     .login-btn {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       border: none;
       border-radius: 25px;
-      background: linear-gradient(to right, #ff7043, #ff5722);
+      background: linear-gradient(270deg, #ff7043, #ff5722, #ff7043);
+      background-size: 300% 300%;
       color: white;
       font-size: 16px;
       cursor: pointer;
-      transition: 0.3s;
+      animation: gradientMove 5s infinite ease;
+      transition: transform 0.2s;
+      box-shadow: 0 0 15px rgba(255, 87, 34, 0.7);
     }
 
-    .login-btn:hover {
-      background: linear-gradient(to right, #ff5722, #e64a19);
+    .login-btn:active {
+      transform: scale(0.95);
     }
 
     .signup-text {
@@ -91,13 +102,12 @@
     .signup-text a {
       color: #ff5722;
       text-decoration: none;
+      font-weight: bold;
     }
 
-    .signup-text a:hover {
-      text-decoration: underline;
-    }
-
+    /* Right side welcome */
     .welcome-box {
+      margin-left: 15px;
       flex: 1;
       padding: 40px;
       display: flex;
@@ -105,44 +115,80 @@
       align-items: center;
       text-align: center;
       color: #fff;
+      background: #111;
     }
 
     .welcome-box h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
+      font-size: 32px;
+      color: #ff7043;
+      text-shadow: 0 0 15px rgba(255, 87, 34, 0.9);
     }
 
     .welcome-box p {
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: 16px;
+      margin-top: 10px;
       color: #eee;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="login-container">
-    <div class="login-form">
-      <h2>Login</h2>
-      <div class="input-group">
-        <input type="text" placeholder="Username">
-        <span class="icon">👤</span>
+  <form id="form">
+    <div class="card front">
+      <div class="login-form">
+        <h2>Login</h2>
+        <div class="input-group">
+          <input type="text" placeholder="Username" id="username" required>
+          <span class="icon">👤</span>
+        </div>
+        <div class="input-group">
+          <input type="password" placeholder="Password" id="password" required>
+          <span class="icon">🔒</span>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+        <div class="signup-text">
+          Don’t have an account? <a href="si.html">Sign Up</a>
+        </div>
       </div>
-      <div class="input-group">
-        <input type="password" placeholder="Password">
-        <span class="icon">🔒</span>
-      </div>
-      <button class="login-btn">Login</button>
-      <div class="signup-text">
-        Don’t have an account? <a href="si.html">Sign Up</a>
+      <div class="welcome-box">
+        <div>
+          <h1>WELCOME BACK!</h1>
+          <p>Jhol Mal Top Up</p>
+        </div>
       </div>
     </div>
-    <div class="welcome-box">
-      <div>
-        <h1>WELCOME BACK!</h1>
-        <p>We are happy to have you with us again.<br>
-        If you need anything, we are here to help.</p>
-      </div>
-    </div>
-  </div>
+  </form>
+
+  <script>
+    document.getElementById("form").addEventListener("submit", function (e) {
+      e.preventDefault(); // stop default form submission
+
+      // ✅ here you can also check username/password if needed
+      let user = document.getElementById("username").value.trim();
+      let pass = document.getElementById("password").value.trim();
+
+      if (user && pass) {
+        // go to index.html
+        window.location.href = "index.html";
+      } else {
+        alert("Please enter username and password!");
+      }
+    });
+  </script>
 </body>
+
 </html>

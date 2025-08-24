@@ -1,153 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register Page</title>
+  <title>Flip Login/Register</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+    body {
+      background-color: #111;
+      color: #fff;
     }
 
-    body {
+    .card {
+      width: 800px;
+      height: 400px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease;
+    }
+
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .side {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(255, 72, 0, 0.6);
+    }
+
+    .back {
+      transform: rotateY(180deg);
+    }
+
+    /* Shared container style */
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .left {
+      flex: 1;
+      background: linear-gradient(135deg, #d53369, #ff7f11);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .left h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .right {
+      flex: 1;
+      background: #111;
+      color: #fff;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .right h2 {
+      margin-bottom: 20px;
+    }
+
+    .right input {
+      background: none;
+      border: none;
+      border-bottom: 1px solid #666;
+      margin: 15px 0;
+      padding: 10px 5px;
+      color: #fff;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .right input:focus {
+      border-bottom: 1px solid #ff7f11;
+      box-shadow: 0 2px 8px rgba(255, 127, 17, 0.6);
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 12px;
+      background: linear-gradient(270deg, #ff512f, #ff7f11, #ff512f);
+      background-size: 300% 300%;
+      border: none;
+      color: #fff;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      animation: gradientMove 5s ease infinite;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+
+    .switch-link {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .switch-link a {
+      color: #ff7f11;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .switch-link a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: #ff7f11;
+      transition: width 0.3s;
+    }
+
+    .switch-link a:hover::after {
+      width: 100%;
+    }
+
+    #form {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: #111;
     }
 
-    .container {
-      display: flex;
-      background: #1a1a1a;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 25px rgba(255, 85, 0, 0.4);
-      width: 700px;
-    }
-
-    .welcome-box {
-      flex: 1;
-      background: linear-gradient(135deg, #c44, #f60);
-      color: white;
-      padding: 40px 30px;
-    }
-
-    .welcome-box h2 {
-      font-size: 28px;
-      margin-bottom: 15px;
-    }
-
-    .welcome-box p {
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .form-box {
-      flex: 1;
-      padding: 40px 30px;
-      background: #111;
-      color: white;
-    }
-
-    .form-box h2 {
-      margin-bottom: 25px;
-      font-size: 24px;
-    }
-
-    .input-field {
+    .input-group {
       position: relative;
-      margin-bottom: 20px;
     }
 
-    .input-field input {
-      width: 100%;
+    .input-group input {
+      width: 90%;
       padding: 12px 40px 12px 12px;
       border: none;
-      border-bottom: 2px solid #666;
-      background: transparent;
-      color: white;
-      font-size: 16px;
+      border-bottom: 2px solid #444;
+      background: none;
+      color: #fff;
+      font-size: 15px;
       outline: none;
-    }
-
-    .input-field input:focus {
-      border-color: #f60;
-    }
-
-    .input-field i {
-      position: absolute;
-      right: 10px;
-      top: 12px;
-      color: #888;
-    }
-
-    .btn {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 25px;
-      background: linear-gradient(to right, #c44, #f60);
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
       transition: 0.3s;
     }
 
-    .btn:hover {
-      opacity: 0.9;
+    .input-group input:focus {
+      border-bottom: 2px solid #ff5722;
+      box-shadow: 0 4px 8px rgba(255, 87, 34, 0.4);
     }
 
-    .signin-text {
-      margin-top: 15px;
-      text-align: center;
-      font-size: 14px;
-      color: #bbb;
+    .input-group .icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #ff7043;
+      pointer-events: none;
     }
 
-    .signin-text a {
-      color: #f60;
-      text-decoration: none;
-      font-weight: bold;
-    }
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
 
-    .signin-text a:hover {
-      text-decoration: underline;
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
   </style>
-  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
 </head>
-<body>
-  <div class="container">
-    <!-- Welcome Section -->
-    <div class="welcome-box">
-      <h2>WELCOME!</h2>
-      <p>We’re delighted to have you here. If you need any assistance, feel free to reach out.</p>
-    </div>
 
-    <!-- Form Section -->
-    <div class="form-box">
-      <h2>Register</h2>
-      <form>
-        <div class="input-field">
-          <input type="text" placeholder="Username" required>
-          <i class="fas fa-user"></i>
+<body>
+  <form id="form">
+    <div class="card" id="card">
+      <div class="side front">
+        <div class="container">
+          <div class="left">
+            <h1>WELCOME</h1>
+            <p>Jhol Mal Top Up</p>
+          </div>
+          <div class="right">
+            <h2>Register</h2>
+            <div class="input-group">
+              <input type="text" id="username" placeholder="Username" required>
+              <span class="icon">👤</span>
+            </div>
+            <div class="input-group">
+              <input type="email" id="email" placeholder="Email" required>
+              <span class="icon">📧</span>
+            </div>
+            <div class="input-group">
+              <input type="password" id="password" placeholder="Password" required>
+              <span class="icon">🔒</span>
+            </div>
+            <button type="submit" class="btn">Register</button>
+            <p class="switch-link">Already have an account? <a href="signup.html">Sign In</a></p>
+          </div>
         </div>
-        <div class="input-field">
-          <input type="email" placeholder="Email" required>
-          <i class="fas fa-envelope"></i>
-        </div>
-        <div class="input-field">
-          <input type="password" placeholder="Password" required>
-          <i class="fas fa-lock"></i>
-        </div>
-        <button type="submit" class="btn">Register</button>
-      </form>
-      <p class="signin-text">you already have account? <a href="signup.html">Sign In</a></p>
+      </div>
     </div>
-  </div>
+  </form>
+
+  <script>
+    document.getElementById("form").addEventListener("submit", function (e) {
+      e.preventDefault(); // stop normal submit
+
+      let user = document.getElementById("username").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let pass = document.getElementById("password").value.trim();
+
+      if (user && email && pass) {
+        // ✅ redirect after successful "register"
+        window.location.href = "index.html";
+      } else {
+        alert("Please fill all fields!");
+      }
+    });
+  </script>
 </body>
+
 </html>
